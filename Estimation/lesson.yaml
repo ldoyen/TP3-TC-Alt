@@ -1,0 +1,127 @@
+- Class: meta
+  Course: TP3-TC-CI
+  Lesson: Estimation
+  Author: Laurent Doyen
+  Type: Standard
+  Organization: IUT2 Grenoble - TC
+  Version: 1
+
+- Class: exact_question
+  Output: Entrez votre numéro d'étudiant.
+  CorrectAnswer: NULL
+  AnswerTests: num_etud()
+  Hint: Entrez votre numéro d'étudiant.
+
+- Class: mult_question
+  Output: swirl va maintenant ouvrir une page web dans votre navigateur internet contenant votre sujet de TP3.
+    Attention, si vous interrompez cette leçon en tapant l'instruction bye(), pensez bien à sauvegarder la page web contenant votre sujet de TP dans votre bookmark.
+    En effet, si vous ne le faites pas, vous n'aurez plus accès au sujet de TP à moins de recommencer depuis le début votre leçon swirl.
+    Etes-vous prêt à commencer cette leçon du TP3 ? Les questions suivantes correspondent à la partie intitulée "Estimation".
+  AnswerChoices: Oui;Non
+  CorrectAnswer: NULL
+  AnswerTests: ouvrir_sujet_TP()
+  Hint: Tapez Oui et validez avec la touche Entrée pour commencer votre TP3.
+
+- Class: cmd_question
+  Output: Réponse à la question 2a.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|(omnitest(correctVal =dim(get(e$vs$yy_OQ)))&expr_uses_func('dim'))
+  Hint: Réponse à la question 2a.
+
+- Class: cmd_question
+  Output: Réponse à la question 2b.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|omnitest(correctExpr =paste0(e$vs$yy_OQ,"[1,]",collapse=""))
+  Hint: Réponse à la question 2b.
+
+- Class: cmd_question
+  Output: Réponse à la question 2d.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|omnitest(correctExpr =paste0(e$vs$yy_OQ,"[",e$vs$j_OQ,",",e$vs$i_OQ,"]",collapse=""))
+  Hint: Réponse à la question 2d.
+
+- Class: cmd_question
+  Output: Réponse à la question 2e.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|any_of_exprs(paste0("hist(",e$vs$yy_OQ,"[",e$vs$j_OQ,",],freq=F)",collapse=""),paste0("hist(",e$vs$yy_OQ,"[",e$vs$j_OQ,",],freq=FALSE)",collapse=""),paste0("hist(",e$vs$yy_OQ,"[",e$vs$j_OQ,",1:",e$vs$n_OQ,"],freq=F)",collapse=""),paste0("hist(",e$vs$yy_OQ,"[",e$vs$j_OQ,",1:",e$vs$n_OQ,"],freq=FALSE)",collapse=""))
+  Hint: Réponse à la question 2e.
+
+- Class: cmd_question
+  Output: Réponse à la question 2g.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|omnitest(correctVal =mean(get(e$vs$yy_OQ)[e$vs$j_OQ,]))
+  Hint: Réponse à la question 2g.
+
+- Class: cmd_question
+  Output: Réponse à la question 2h.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|omnitest(correctExpr =paste0(e$vs$mu_OQ,"<-apply(",e$vs$yy_OQ,",1,mean)",collapse=""))
+  Hint: Réponse à la question 2h.
+
+- Class: cmd_question
+  Output: Réponse à la question 2i.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|omnitest(correctExpr =paste0(e$vs$mu_OQ,"[",e$vs$j_OQ,"]",collapse=""))
+  Hint: Réponse à la question 2i.
+
+- Class: cmd_question
+  Output: Réponse à la question 2k.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|any_of_exprs(paste0("hist(",e$vs$mu_OQ,",freq=F)",collapse=""),paste0("hist(",e$vs$mu_OQ,",freq=FALSE)",collapse=""),paste0("hist(",e$vs$mu_OQ,"[1:",e$vs$m_OQ,"]",",freq=F)",collapse=""),paste0("hist(",e$vs$mu_OQ,"[1:",e$vs$m_OQ,"]",",freq=FALSE)",collapse=""))
+  Hint: Réponse à la question 2k.
+
+- Class: cmd_question
+  Output: Réponse à la question 2m.
+  CorrectAnswer: stop("Vous ne pouvez pas utiliser skip()")
+  AnswerTests: test_passer()|omnitest(correctVal =mean(get(e$vs$mu_OQ)))
+  Hint: Réponse à la question 2m.
+
+
+- Class: exact_question
+  Output: Swirl va recueillir votre identité afin que vous puissiez procéder à la validation de votre TP. Tapez 1 puis appuyez sur la touche Entrée pour continuer.
+  CorrectAnswer: NULL
+  AnswerTests: submit_log_alt()
+  Hint: Tapez 1 puis appuyez sur la touche Entrée pour continuer.
+
+- Class: mult_question
+  Output: Swirl a ouvert une page Google Form dans votre navigateur web. Vous devez valider cette page (sans rien y modifier) en appuyant sur le bouton ENVOYER.
+    Nous vous rappelons que vous ne pouvez valider qu'une seule fois chaque leçon !
+    Avez-vous validé votre Google Form ?
+  AnswerChoices: Oui;Non, je souhaite que swirl tente de réouvrir un Google Form; Non, j'ai éssayé plusieur fois ca ne fonctionne pas
+  CorrectAnswer: NULL
+  AnswerTests: googleForm_log()
+  Hint: Vous devez valider le Google Form, sans le modifier. L'avez-vous fait ?
+
+- Class: mult_question
+  Output: Swirl a maintenant créé un email dans votre utilitaire de messagerie. Vous devez envoyer cet email, sans le modifier, pour finir de valider cette leçon du TP.
+    Avez-vous envoyé l'email créé par swirl ?
+  AnswerChoices: Oui;Non, je souhaite que swirl tente de réouvrir un email; Non, j'ai éssayé plusieur fois ca ne fonctionne pas
+  CorrectAnswer: NULL
+  AnswerTests: email_log()
+  Hint: Vous devez envoyer l'email créé par swirl dans votre messagerie, sans le modifier. L'avez-vous fait ?
+
+- Class: mult_question
+  Output: Swirl va maintenant sauvegarder le contenu de votre travail dans votre ordinateur.
+    Si vous n'avez réussi ni à valider votre Google Form, ni à envoyer l'email généré automatiquement par swirl, vous devrez, par vous même, envoyer par email le fichier qui va se créer
+    à votre enseignant de TD (laurent.doyen@iut2.univ-grenoble-alpes.fr ou marie-jose.martinez@iut2.univ-grenoble-alpes.fr).
+    Pour autant, dans tout les cas, vous devez garder sur votre ordinateur ce fichier, il peut vous être demandé en cas de problème.
+    Si vous travaillez dans les salles libre service de l'IUT, vous devez choisir de stocker ce fichier dans votre espace personnel afin de le conserver.
+    Si vous ne possédez plus ce fichier alors qu'il vous est demandé, vous aurez 0 aux leçons correspondantes.
+    Souhaitez-vous continuer ?
+  AnswerChoices: Oui;Oui, je n'ai pas le choix
+  CorrectAnswer: NULL
+  AnswerTests: sauve_log()
+  Hint: Répondez Oui, vous n'avez pas le choix !
+
+- Class: mult_question
+  Output: Cherchez le fichier contenant votre clé. Est-il dans un espace personnel ?
+    Si vous n'avez réussi ni à valider votre Google Form, ni à envoyer l'email généré automatiquement par swirl, vous devez envoyer par email ce fichier
+    à votre enseignant de TD (laurent.doyen@iut2.univ-grenoble-alpes.fr ou marie-jose.martinez@iut2.univ-grenoble-alpes.fr).
+    Avez-vous fait les étapes décrite ci dessus ?
+  AnswerChoices: Oui;Non, je ne trouve pas ce fichier
+  CorrectAnswer: NULL
+  AnswerTests: qsauve_log()
+  Hint: Si vous n'avez réussi ni à valider votre Google Form, ni à envoyer l'email généré automatiquement par swirl, avez-vous envoyé le fichier contenant votre clé ?
+
+- Class: text
+  Output: Maintenant à vous de faire les leçons suivantes de ce TP3.
