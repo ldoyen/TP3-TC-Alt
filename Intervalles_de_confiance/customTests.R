@@ -51,7 +51,7 @@ num_etud<-function(){
    Y=c("Y^A","Y^B","Y^C","Y^D","Y^X","Y^Z"),
  	 y=c("y^A","y^B","y^C","y^D","y^X","y^Z"),
    nom_data=c("yA","y_B","y_C_obs","yD","y_X","y_Z_obs"),
-	 pageWebsujet=c("https://toltex.u-ga.fr/VAM/TP3/sujet.html","https://toltex.u-ga.fr/VAM/TP3/sujet_tp.html","https://toltex.u-ga.fr/VAM/TP3/sujet__tp.html","https://toltex.u-ga.fr/VAM/TP3/sujet3.html","https://toltex.u-ga.fr/VAM/TP3/sujet_tp3.html","https://toltex.u-ga.fr/VAM/TP3/sujet__tp3.html")
+	 pageWebsujet=c("https://toltex.imag.fr/VAM/TP3/sujet.html","https://toltex.imag.fr/VAM/TP3/sujet_tp.html","https://toltex.imag.fr/VAM/TP3/sujet__tp.html","https://toltex.imag.fr/VAM/TP3/sujet3.html","https://toltex.imag.fr/VAM/TP3/sujet_tp3.html","https://toltex.imag.fr/VAM/TP3/sujet__tp3.html")
   )
   ####
 
@@ -141,6 +141,8 @@ if(selection %in% 1:5){
   write.csv(log_tbl, file = temp, row.names = FALSE)
   encoded_log <- base64encode(temp)
   e <- get("e", parent.frame())
+  e$encoded_log<-encoded_log
+  e$log_tbl<-log_tbl
   e$url_googleForm<-paste0(pre_fill_link, encoded_log)
   #browseURL(paste0(pre_fill_link, encoded_log)
   readline("Swirl va maintenant ouvrir un Google Form dans votre navigateur web. Tapez sur la touche Entrée.")
